@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Минуше — моей любимой</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#21102b;--wine:#7d1f48;--rose:#e0567c;--blush:#f7dbdc;--paper:#fff6f1;--gold:#e8b56f;--ink:#2a1730;
+--bg:var(--paper);--tx:var(--ink);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--night);color:var(--tx);font:400 18px/1.7 Manrope,system-ui,sans-serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;line-height:1.05;margin:0}
+p{margin:0 0 1.1em;max-width:60ch}
+section{position:relative;padding:clamp(72px,12vw,140px) clamp(22px,7vw,110px)}
+.light{background:var(--paper);color:var(--ink)}
+.dark{background:var(--night);color:var(--blush)}
+.wine{background:var(--wine);color:#ffe9ec}
+.wrap{max-width:900px;margin:0 auto}
+h2{font-size:clamp(38px,7vw,78px);font-style:italic;margin-bottom:.45em}
+.light h2{color:var(--wine)}.dark h2{color:var(--gold)}.wine h2{color:#ffd9a3}
+.chap{font-family:"Cormorant Garamond",serif;font-size:22px;font-style:italic;opacity:.7;margin-bottom:6px}
+/* hero */
+#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(120% 90% at 50% 100%,#5a1740 0,var(--night) 65%);color:var(--blush);overflow:hidden}
+#hero h1{font-size:clamp(64px,17vw,190px);font-style:italic;color:#fff;letter-spacing:-.02em}
+#hero .sub{font-family:"Cormorant Garamond",serif;font-size:clamp(24px,4vw,40px);font-style:italic;color:var(--gold);min-height:1.4em;margin-top:.3em;transition:opacity .5s}
+#hero .lead{margin-top:1.6em;opacity:.85}
+.go{display:inline-block;margin-top:1.4em;padding:14px 28px;border-radius:999px;background:var(--rose);color:#fff;text-decoration:none;font-weight:700;border:0;font:700 17px Manrope,sans-serif;cursor:pointer}
+.go:hover{background:#ee6b90}
+.go:focus-visible,.card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.hearts{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hearts i{position:absolute;bottom:-40px;font-style:normal;color:var(--rose);opacity:0;animation:up linear infinite}
+@keyframes up{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.6}100%{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+/* timeline line */
+.tl{border-left:2px solid currentColor;padding-left:clamp(18px,4vw,40px);margin-left:6px;position:relative}
+.tl::before{content:"♥";position:absolute;left:-11px;top:-6px;font-size:20px;color:var(--rose);background:inherit}
+.quote{font-family:"Cormorant Garamond",serif;font-size:clamp(24px,3.6vw,36px);font-style:italic;line-height:1.25;margin:1.3em 0;padding-left:20px;border-left:4px solid var(--rose)}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:2em}
+.card{background:rgba(255,255,255,.1);border:1px solid rgba(255,230,200,.35);border-radius:18px;padding:22px;min-height:150px;cursor:pointer;text-align:left;color:inherit;font:inherit;transition:background .2s,transform .2s}
+.card:hover{background:rgba(255,255,255,.18)}
+.card b{display:block;font-family:"Cormorant Garamond",serif;font-size:26px;color:#ffd9a3;margin-bottom:6px}
+.card span{display:none}
+.card.open span{display:block}
+.card.open .hint{display:none}
+.hint{opacity:.7;font-size:15px}
+.warn{display:inline-block;border:1px solid currentColor;border-radius:8px;padding:2px 10px;font-size:14px;margin-bottom:18px}
+/* plans */
+.plans{list-style:none;padding:0;margin:1.6em 0 0;display:grid;gap:14px}
+.plans li{background:#fff;border-radius:16px;padding:18px 22px;box-shadow:0 6px 24px rgba(125,31,72,.1);display:flex;gap:16px;align-items:flex-start}
+.plans .e{font-size:30px;line-height:1}
+.plans b{color:var(--wine)}
+/* finale */
+#finale{text-align:center;background:radial-gradient(90% 80% at 50% 0,#5a1740 0,var(--night) 70%);color:var(--blush)}
+#finale p{margin-left:auto;margin-right:auto}
+#finale h2{color:#fff}
+.reasons{list-style:none;padding:0;margin:1.5em auto;max-width:640px;display:grid;gap:10px;text-align:left}
+.reasons li{opacity:0;transform:translateY(8px);transition:.5s;padding:14px 20px;border-radius:14px;background:rgba(255,255,255,.08)}
+.reasons li.on{opacity:1;transform:none}
+.big{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(34px,6vw,64px);color:var(--gold);margin-top:1.2em;line-height:1.1}
+footer{padding:28px;text-align:center;background:#170a1f;color:#b990a6;font-size:15px}
+@media (prefers-reduced-motion:reduce){.hearts i{animation:none;opacity:0}html{scroll-behavior:auto}.reasons li{transition:none}}
+:root[data-x]{}
+</style>
+</head>
+<body>
+
+<section id="hero">
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+  <div class="wrap" style="position:relative">
+    <p class="chap">сайт, который я сделал только для тебя</p>
+    <h1>Минуша</h1>
+    <div class="sub" id="nick">Минуфонок</div>
+    <p class="lead">Здесь восемь маленьких глав о нас: от первого взгляда до того, как сильно ты мне дорога. Читай не спеша, кошечка.</p>
+    <a class="go" href="#c1">Начать с самого начала</a>
+  </div>
+</section>
+
+<section id="c1" class="light">
+  <div class="wrap">
+    <div class="chap">глава первая</div>
+    <h2>Когда я только с тобой познакомился</h2>
+    <div class="tl">
+      <p>Я ещё не знал, что этот день изменит всё. Просто увидел тебя, услышал твой голос, твой смех — и внутри что-то тихо щёлкнуло. Не громко, не как в кино. Как будто в комнате, где давно было темно, кто-то зажёг маленький тёплый свет.</p>
+      <p>Помню, как хотелось узнать о тебе всё: что ты любишь, над чем смеёшься, о чём молчишь. Ты казалась мне интересной, живой и немного загадочной — и я ещё не понимал, что эта загадка станет моим самым любимым местом на свете.</p>
+      <div class="quote">С первого дня рядом с тобой было спокойно. Как будто я вернулся домой, хотя в этом доме ещё ни разу не был.</div>
+    </div>
+  </div>
+</section>
+
+<section id="c2" class="dark">
+  <div class="wrap">
+    <div class="chap">глава вторая</div>
+    <h2>Как ты первая влюбилась и добивалась меня</h2>
+    <div class="tl">
+      <p>Признаюсь: ты оказалась смелее. Пока я осторожничал и делал вид, что всё под контролем, ты уже всё решила. Твои сообщения, взгляды, внимание, маленькие хитрости — ты шла ко мне уверенно и красиво, как кошка, которая точно знает, где её место.</p>
+      <p>Ты не сдавалась, даже когда я тупил. Ты была терпеливой, настойчивой и такой тёплой, что в какой-то момент сопротивляться стало просто смешно. Спасибо, что первая сделала шаг. Без него меня бы сейчас не было таким счастливым.</p>
+      <div class="quote">Ты добивалась меня, а на самом деле дарила мне самый лучший подарок в жизни.</div>
+    </div>
+  </div>
+</section>
+
+<section id="c3" class="light">
+  <div class="wrap">
+    <div class="chap">глава третья</div>
+    <h2>Как я незаметно влюбился и покорился тебе</h2>
+    <div class="tl">
+      <p>Я не помню дня, когда это случилось. Не было громкого момента, просто с каждым разговором, каждой прогулкой, каждым «ты как?» я становился всё больше твоим. Однажды поймал себя на мысли, что первым делом хочу рассказать всё тебе. Что твоё настроение важнее моих планов. Что твоя улыбка — лучший показатель хорошего дня.</p>
+      <p>И знаешь, я совсем не против. Быть твоим — самая приятная форма поражения. Ты сказала — я сделал. Ты улыбнулась — я уже счастлив. Командуй, моя королева, я с удовольствием подчиняюсь.</p>
+      <div class="quote">Я сдался тебе без боя. И ни секунды об этом не жалею.</div>
+    </div>
+  </div>
+</section>
+
+<section id="c4" class="wine">
+  <div class="wrap">
+    <div class="chap">глава четвёртая</div>
+    <h2>Наше первое лето</h2>
+    <div class="tl">
+      <p>Это лето я запомню навсегда. Тёплые вечера, долгие разговоры ни о чём, смех до слёз, твоя рука в моей. Каждый день был как маленький праздник, потому что рядом была ты.</p>
+      <p>Мы вместе открывали новые места, вместе ели что-то вкусное и совершенно не полезное, вместе мёрзли под кондиционером и вместе ленились. Даже обычные моменты рядом с тобой становились особенными.</p>
+    </div>
+    <div class="grid">
+      <div class="card open" style="cursor:default"><b>Вечера</b><span>Когда солнце садится, а мне никуда не хочется, потому что лучшее место уже рядом.</span></div>
+      <div class="card open" style="cursor:default"><b>Смех</b><span>Наши шутки, которые понимаем только мы двое. Их я не променяю ни на какие другие.</span></div>
+      <div class="card open" style="cursor:default"><b>Ты рядом</b><span>Всё остальное лето было просто фоном для тебя.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="c5" class="light">
+  <div class="wrap">
+    <div class="chap">глава пятая</div>
+    <h2>Наши планы на жизнь</h2>
+    <p>Самое красивое, что есть в нас — это «потом». Мы не просто живём сегодняшним днём, мы уже строим завтра, и я в нём вижу только нас двоих.</p>
+    <ul class="plans">
+      <li><span class="e">🏡</span><div><b>Свой уютный дом.</b> Такой, куда хочется возвращаться, где пахнет вкусным, а на диване всегда есть место для кошечки.</div></li>
+      <li><span class="e">✈️</span><div><b>Путешествия.</b> Увидеть вместе как можно больше мест и в каждом обязательно потеряться, чтобы потом смеяться.</div></li>
+      <li><span class="e">🌱</span><div><b>Расти вместе.</b> Поддерживать друг друга в мечтах, работе, ошибках и победах. Быть командой.</div></li>
+      <li><span class="e">💍</span><div><b>Долгая счастливая жизнь.</b> Просто много лет подряд просыпаться рядом с тобой.</div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="c6" class="dark">
+  <div class="wrap">
+    <div class="chap">глава шестая</div>
+    <h2>Наши шалости</h2>
+    <span class="warn">18+ · только для нас двоих</span>
+    <p>У нас с тобой есть особый язык: намёки, двусмысленности, взгляды с прищуром и шутки, после которых мы оба уже не можем нормально дышать. Ты умеешь одной фразой довести меня до румянца, а я и не пытаюсь спорить. Нажимай на карточки, кошечка.</p>
+    <div class="grid" id="naughty">
+      <button class="card"><b>Твой взгляд</b><span class="hint">нажми…</span><span>Один такой прищур — и я уже забыл, о чём мы говорили. Ты прекрасно знаешь, что делаешь. И мне очень нравится.</span></button>
+      <button class="card"><b>Наши шуточки</b><span class="hint">нажми…</span><span>Мы можем начать обсуждать что угодно, а закончить чем-то совсем неприличным. И оба смеёмся, и оба хотим продолжения.</span></button>
+      <button class="card"><b>Твоё сообщение</b><span class="hint">нажми…</span><span>Пара слов, эмодзи — и весь мой рабочий день летит к чёрту. Ты хулиганка, и я обожаю каждую твою провокацию.</span></button>
+      <button class="card"><b>Вечером</b><span class="hint">нажми…</span><span>Скажу только, что ты лучшее, что может случиться после «спокойной ночи». Остальное оставим для шёпота.</span></button>
+      <button class="card"><b>Ночные посиделки</b><span class="hint">нажми…</span><span>Когда мир засыпает, у нас только начинается. Шёпот, затаённое дыхание, дразнящие слова, и вот мы уже заводим друг друга всё сильнее. Ни один из нас не сдаётся первым, пока оба не растворимся в дрожи и счастье. Каждый раз хочется ещё.</span></button>
+      <button class="card"><b>Друг для друга</b><span class="hint">нажми…</span><span>Мне безумно нравится делать тебе хорошо, слышать, как сбивается твой голос, и видеть, как ты теряешь контроль. А ещё нравится, как ты в ответ сводишь с ума меня. Мы оба играем, и оба выигрываем.</span></button>
+    </div>
+    <p style="margin-top:2em">Ты возбуждаешь не только телом. Ты возбуждаешь умом, голосом, игрой, дерзостью и тем, как легко мы с тобой можем быть собой. Это дорогого стоит.</p>
+  </div>
+</section>
+
+<section id="c7" class="light">
+  <div class="wrap">
+    <div class="chap">глава седьмая</div>
+    <h2>Подарки, смущение и твоя улыбка</h2>
+    <div class="tl">
+      <p>Мне безумно нравится тебя баловать. Выбирать подарок, представлять твоё лицо, когда ты откроешь, ждать этот момент, когда глаза загораются. Для меня это одно из самых больших счастий. Не потому что «надо», а потому что ты этого достойна.</p>
+      <p>А ещё я обожаю тебя смущать. Сказать что-нибудь дерзкое и увидеть, как ты краснеешь, прячешь улыбку и делаешь вид, что возмущена. Ты в эти секунды такая милая, что я готов повторять снова и снова.</p>
+      <div class="quote">И ещё одно: я совсем не хочу, чтобы ты злилась. Твоя улыбка для меня важнее, чем моя правота.</div>
+      <p>Если я где-то ошибусь, скажи мне, и я всё исправлю. Мне не нужны победы в спорах, мне нужно, чтобы тебе было тепло и хорошо рядом со мной. Твоё спокойствие и радость для меня всегда на первом месте.</p>
+    </div>
+  </div>
+</section>
+
+<section id="finale">
+  <div class="wrap">
+    <div class="chap">глава восьмая</div>
+    <h2>Ты бесконечно мне дорога</h2>
+    <p>Минуша, Минуфонок, Рамусик, Рамуша, кошечка, дорогая — у меня столько имён для тебя, потому что одного мало. Ты красивая, умная, тёплая, дерзкая, нежная и невероятная. Нажми, и я скажу, почему.</p>
+    <button class="go" id="why">Почему ты особенная</button>
+    <ul class="reasons" id="reasons">
+      <li>Потому что твоя красота настоящая: в глазах, в улыбке, в каждом движении.</li>
+      <li>Потому что рядом с тобой я становлюсь лучше.</li>
+      <li>Потому что ты умеешь быть и нежной, и озорной, и сильной.</li>
+      <li>Потому что с тобой даже обычный вторник похож на праздник.</li>
+      <li>Потому что ты выбрала меня, а я выбираю тебя каждый день.</li>
+    </ul>
+    <div class="big" id="last" style="display:none">Я люблю тебя, моя Минуша.<br>Сегодня, завтра и всегда. ♥</div>
+  </div>
+</section>
+
+<footer>Сделано с любовью. Только для тебя.</footer>
+
+<script>
+(function(){
+  var names=["Минуфонок","Рамусик","Рамуша","Кошечка","Дорогая","Минуша"],n=0,el=document.getElementById("nick");
+  setInterval(function(){el.style.opacity=0;setTimeout(function(){n=(n+1)%names.length;el.textContent=names[n];el.style.opacity=1},500)},2800);
+  var box=document.getElementById("hearts");
+  for(var i=0;i<22;i++){var h=document.createElement("i");h.textContent="♥";
+    h.style.left=Math.random()*100+"%";h.style.fontSize=(12+Math.random()*26)+"px";
+    h.style.animationDuration=(9+Math.random()*10)+"s";h.style.animationDelay=(-Math.random()*14)+"s";box.appendChild(h)}
+  document.querySelectorAll("#naughty .card").forEach(function(c){c.addEventListener("click",function(){c.classList.toggle("open")})});
+  var lis=document.querySelectorAll("#reasons li");
+  document.getElementById("why").addEventListener("click",function(){
+    this.style.display="none";
+    lis.forEach(function(li,i){setTimeout(function(){li.classList.add("on")},i*700)});
+    setTimeout(function(){var l=document.getElementById("last");l.style.display="block";l.scrollIntoView({behavior:"smooth",block:"center"})},lis.length*700+400);
+  });
+})();
+</script>
+</body>
+</html>
